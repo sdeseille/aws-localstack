@@ -18,3 +18,7 @@ It is a more common way in order to set environment variables with [docker-compo
 *Start AWS localstack container*
 
         docker-compose up
+
+*Results observed after starting up container*
+
+![aws-localstack_started](images/aws-localstack_started.png)
