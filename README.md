@@ -14,3 +14,7 @@ First i have to write docker-compose file from localstack repository
 
 Write an .env file to set AWS localstack services to boot in environment variables and start docker container.
 It is a more common way in order to set environment variables with [docker-compose](https://docs.docker.com/compose/environment-variables/#the-env-file).
+
+*Start AWS localstack container*
+
+        docker-compose up
