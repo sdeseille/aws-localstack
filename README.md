@@ -5,8 +5,9 @@
 - [1. Create docker-compose file](#1-create-docker-compose-file)
 - [2. Set environment and start container](#2-set-environment-and-start-container)
   - [2.1. Set .env file](#21-set-env-file)
-  - [2.2. Start AWS localstack container](#22-start-aws-localstack-container)
-  - [2.3. Check services status](#23-check-services-status)
+  - [2.2. Check .env settings](#22-check-env-settings)
+  - [2.3. Start AWS localstack container](#23-start-aws-localstack-container)
+  - [2.4. Check services status](#24-check-services-status)
 - [3. Using SNS and SQS services from AWS CLI](#3-using-sns-and-sqs-services-from-aws-cli)
   - [3.1. Create an SNS Topic](#31-create-an-sns-topic)
   - [3.2. List all SNS Topics](#32-list-all-sns-topics)
@@ -29,7 +30,69 @@ First i have to write docker-compose file from localstack repository
 Write an .env file to set AWS localstack services to boot in environment variables and start docker container.
 It is a more common way in order to set environment variables with [docker-compose](https://docs.docker.com/compose/environment-variables/#the-env-file).
 
-### 2.2. Start AWS localstack container
+### 2.2. Check .env settings
+
+Command Input:
+
+        PS D:\git_projects\aws-localstack> docker-compose config
+
+Command Output:
+
+        services:
+          localstack:
+            container_name: localstack_main
+            environment:
+              DATA_DIR: ./data
+              DEBUG: ' '
+              DOCKER_HOST: unix:///var/run/docker.sock
+              HOST_TMP_FOLDER: ./temp
+              KINESIS_ERROR_PROBABILITY: ' '
+              LAMBDA_EXECUTOR: ' '
+              PORT_WEB_UI: '8088'
+              SERVICES: serverless,sqs
+            image: localstack/localstack
+            ports:
+            - 4566:4566/tcp
+            - 4567:4567/tcp
+            - 4568:4568/tcp
+            - 4569:4569/tcp
+            - 4570:4570/tcp
+            - 4571:4571/tcp
+            - 4572:4572/tcp
+            - 4573:4573/tcp
+            - 4574:4574/tcp
+            - 4575:4575/tcp
+            - 4576:4576/tcp
+            - 4577:4577/tcp
+            - 4578:4578/tcp
+            - 4579:4579/tcp
+            - 4580:4580/tcp
+            - 4581:4581/tcp
+            - 4582:4582/tcp
+            - 4583:4583/tcp
+            - 4584:4584/tcp
+            - 4585:4585/tcp
+            - 4586:4586/tcp
+            - 4587:4587/tcp
+            - 4588:4588/tcp
+            - 4589:4589/tcp
+            - 4590:4590/tcp
+            - 4591:4591/tcp
+            - 4592:4592/tcp
+            - 4593:4593/tcp
+            - 4594:4594/tcp
+            - 4595:4595/tcp
+            - 4596:4596/tcp
+            - 4597:4597/tcp
+            - 4598:4598/tcp
+            - 4599:4599/tcp
+            - 8088:8088/tcp
+            volumes:
+            - /d/git_projects/aws-localstack/temp:/tmp/localstack:rw
+            - /var/run/docker.sock:/var/run/docker.sock:rw
+        version: '2.1'
+
+### 2.3. Start AWS localstack container
 
         docker-compose up
 
@@ -37,7 +100,7 @@ It is a more common way in order to set environment variables with [docker-compo
 
 ![aws-localstack_started](images/aws-localstack_started.png)
 
-### 2.3. Check services status
+### 2.4. Check services status
 
 *Verify that our services are up by browsing url [http://localhost:4566/health](http://localhost:4566/health)*
 
